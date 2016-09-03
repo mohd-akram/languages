@@ -2,6 +2,36 @@
 (function() {
   this.COMPILERS = [
     {
+      name: 'Haxe ActionScript Compiler',
+      source: 'Haxe',
+      target: 'ActionScript',
+      type: 'Transpiler'
+    }, {
+      name: 'Haxe C# Compiler',
+      source: 'Haxe',
+      target: 'C#',
+      type: 'Transpiler'
+    }, {
+      name: 'Haxe C++ Compiler',
+      source: 'Haxe',
+      target: 'C++',
+      type: 'Transpiler'
+    }, {
+      name: 'Haxe Java Compiler',
+      source: 'Haxe',
+      target: 'Java',
+      type: 'Transpiler'
+    }, {
+      name: 'Haxe PHP Compiler',
+      source: 'Haxe',
+      target: 'PHP',
+      type: 'Transpiler'
+    }, {
+      name: 'Haxe Python Compiler',
+      source: 'Haxe',
+      target: 'Python',
+      type: 'Transpiler'
+    }, {
       name: 'Js2Py',
       source: 'JavaScript',
       target: 'Python',
@@ -67,6 +97,11 @@
       target: 'JavaScript',
       type: 'Transpiler'
     }, {
+      name: 'Haxe JS Compiler',
+      source: 'Haxe',
+      target: 'JavaScript',
+      type: 'Transpiler'
+    }, {
       name: 'JSIL',
       source: 'CIL',
       target: 'JavaScript',
@@ -120,6 +155,11 @@
       name: 'Nim Compiler',
       source: 'Nim',
       target: 'C',
+      type: 'Intermediate'
+    }, {
+      name: 'Rust Compiler',
+      source: 'Rust',
+      target: 'LLVM IR',
       type: 'Intermediate'
     }, {
       name: 'Swift Compiler',
@@ -197,6 +237,11 @@
       target: 'Machine Code',
       type: 'Native'
     }, {
+      name: 'GNAT',
+      source: 'Ada',
+      target: 'Machine Code',
+      type: 'Native'
+    }, {
       name: 'Go Compiler',
       source: 'Go',
       target: 'Machine Code',
@@ -224,11 +269,6 @@
     }, {
       name: 'OCaml Compiler',
       source: 'OCaml',
-      target: 'Machine Code',
-      type: 'Native'
-    }, {
-      name: 'Rust Compiler',
-      source: 'Rust',
       target: 'Machine Code',
       type: 'Native'
     }, {
