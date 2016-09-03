@@ -302,6 +302,16 @@
       target: 'Machine Code',
       type: 'JIT'
     }, {
+      name: 'HHVM Hack',
+      source: 'Hack',
+      target: 'Machine Code',
+      type: 'JIT'
+    }, {
+      name: 'HHVM PHP',
+      source: 'PHP',
+      target: 'Machine Code',
+      type: 'JIT'
+    }, {
       name: 'JVM',
       source: 'Java Bytecode',
       target: 'Machine Code',
