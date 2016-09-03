@@ -22,6 +22,11 @@
       target: 'Java',
       type: 'Transpiler'
     }, {
+      name: 'Haxe Lua Compiler',
+      source: 'Haxe',
+      target: 'Lua',
+      type: 'Transpiler'
+    }, {
       name: 'Haxe PHP Compiler',
       source: 'Haxe',
       target: 'PHP',
@@ -97,7 +102,7 @@
       target: 'JavaScript',
       type: 'Transpiler'
     }, {
-      name: 'Haxe JS Compiler',
+      name: 'Haxe JavaScript Compiler',
       source: 'Haxe',
       target: 'JavaScript',
       type: 'Transpiler'
