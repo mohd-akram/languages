@@ -117,6 +117,11 @@
       target: 'JavaScript',
       type: 'Transpiler'
     }, {
+      name: 'Kotlin JavaScript Compiler',
+      source: 'Kotlin',
+      target: 'JavaScript',
+      type: 'Transpiler'
+    }, {
       name: 'Scala.js',
       source: 'Scala',
       target: 'JavaScript',
@@ -204,6 +209,11 @@
     }, {
       name: 'Jython',
       source: 'Python',
+      target: 'Java Bytecode',
+      type: 'Intermediate'
+    }, {
+      name: 'Kotlin Compiler',
+      source: 'Kotlin',
       target: 'Java Bytecode',
       type: 'Intermediate'
     }, {
