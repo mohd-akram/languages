@@ -86,8 +86,8 @@
     });
     return graph.layout({
       name: 'cose-bilkent',
-      idealEdgeLength: 101,
-      nodeRepulsion: 11000,
+      idealEdgeLength: 100,
+      nodeRepulsion: 5000,
       padding: 40,
       random: false
     });
