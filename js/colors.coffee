@@ -221,6 +221,7 @@
   'xBase': '#403A40'
 
   # Custom colors
+  'Visual Basic .NET': '#945DB7'
   'Machine Code': '#000000'
   'Java Bytecode': '#222222'
   'CIL': '#222222'

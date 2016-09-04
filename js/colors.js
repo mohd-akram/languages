@@ -220,6 +220,7 @@
     'ooc': '#B0B77E',
     'wisp': '#7582D1',
     'xBase': '#403A40',
+    'Visual Basic .NET': '#945DB7',
     'Machine Code': '#000000',
     'Java Bytecode': '#222222',
     'CIL': '#222222',
