@@ -2,7 +2,7 @@
 elements = []
 
 for compiler in COMPILERS
-  {name, source, target, type} = compiler
+  {name, source, target, type, url} = compiler
   for language in [source, target]
     continue if LANGUAGES.has language
     elements.push
@@ -14,6 +14,7 @@ for compiler in COMPILERS
   elements.push
     data:
       id: name
+      url: url
       source: source
       target: target
       type: type
@@ -77,6 +78,13 @@ window.onload = ->
     nodeRepulsion: 50000
     padding: 40
     random: false
+
+  graph.on "click", "edge", (event) ->
+    # Set URL to edge name
+    url = event.cyTarget.data().url
+    return if url == 'none'
+    win = window.open(event.cyTarget.data().url, '_blank')
+    win.focus()
 
 @filter = (e) ->
   e.preventDefault()
