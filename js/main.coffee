@@ -136,7 +136,7 @@ updateURL = (params) ->
     queryParts.push "#{key}=#{encodeURIComponent value}" if value
 
   history.replaceState params, '',
-    if queryParts.length then "?#{queryParts.join '&'}" else '/'
+    if queryParts.length then "?#{queryParts.join '&'}" else location.pathname
 
 showElements = (elements) ->
   graph.batch ->

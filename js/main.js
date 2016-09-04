@@ -167,7 +167,7 @@
         queryParts.push(key + "=" + (encodeURIComponent(value)));
       }
     }
-    return history.replaceState(params, '', queryParts.length ? "?" + (queryParts.join('&')) : '/');
+    return history.replaceState(params, '', queryParts.length ? "?" + (queryParts.join('&')) : location.pathname);
   };
 
   showElements = function(elements) {
