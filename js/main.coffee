@@ -20,8 +20,6 @@ for compiler in COMPILERS
       sourceColor: COLORS[source] or '#ccc'
       targetColor: COLORS[target] or '#ccc'
 
-defaultText = "#{LANGUAGES.size} languages\n#{COMPILERS.length} compilers"
-
 graph = null
 
 window.onload = ->
@@ -60,6 +58,18 @@ window.onload = ->
         'curve-style': 'bezier'
     ]
 
+  queryParams = {}
+  for param in location.search.slice(1).split('&')
+    [key, value] = param.split '='
+    queryParams[key] = decodeURIComponent value
+
+  {source, target} = queryParams
+
+  form = document.forms[0]
+  [form.source.value, form.target.value] = [source or '', target or '']
+
+  compile source, target if source or target
+
   graph.layout
     name: 'cose-bilkent'
     idealEdgeLength: 100
@@ -71,11 +81,16 @@ window.onload = ->
   e.preventDefault()
   form = e.currentTarget
 
-  source = form.source.value
-  target = form.target.value
+  [source, target] = [form.source.value, form.target.value]
 
-  return show() if not source and not target
+  updateURL source: source, target: target
+  compile source, target
 
+@show = ->
+  updateURL()
+  compile()
+
+compile = (source, target) ->
   info.innerText = 'Select a language from the list'
 
   return if (source and not LANGUAGES.has source) or
@@ -108,13 +123,22 @@ window.onload = ->
       if count is 1 then "#{count} language compiles to #{target}"
       else "#{count} languages compile to #{target}"
 
+  else
+    elements = graph.elements()
+    elements.style display: 'element'
+    text = "#{LANGUAGES.size} languages"
+
   info.innerText = "#{text}\n#{elements.filter('edge').length} compilers"
+
+updateURL = (params) ->
+  queryParts = []
+  for key, value of params
+    queryParts.push "#{key}=#{encodeURIComponent value}" if value
+
+  history.replaceState params, '',
+    if queryParts.length then "?#{queryParts.join '&'}" else '/'
 
 showElements = (elements) ->
   graph.batch ->
     graph.elements().style display: 'none'
     elements.style display: 'element'
-
-@show = (e) ->
-  graph.elements().style display: 'element'
-  info.innerText = defaultText
