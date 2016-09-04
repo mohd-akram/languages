@@ -401,6 +401,36 @@
       source: 'Assembly',
       target: 'Machine Code',
       type: 'Assembler'
+    }, {
+      name: 'Moonscript compiler',
+      source: 'MoonScript',
+      target: 'Lua',
+      type: 'Transpiler'
+    }, {
+      name: 'LLVM llc',
+      source: 'LLVM IR',
+      target: 'C',
+      type: 'Transpiler'
+    }, {
+      name: 'Mono',
+      source: 'C#',
+      target: 'Machine Code',
+      type: 'Native'
+    }, {
+      name: 'GNU Pascal',
+      source: 'Pascal',
+      target: 'Machine Code',
+      type: 'Native'
+    }, {
+      name: 'Julia compiler',
+      source: 'Julia',
+      target: 'Machine Code',
+      type: 'Native'
+    }, {
+      name: 'Dart VM',
+      source: 'Dart',
+      target: 'Native Code',
+      type: 'JIT'
     }
   ];
 
