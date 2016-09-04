@@ -177,6 +177,11 @@
       target: 'LLVM IR',
       type: 'Intermediate'
     }, {
+      name: 'IronPython',
+      source: 'Python',
+      target: 'CIL',
+      type: 'Intermediate'
+    }, {
       name: 'Roslyn',
       source: 'C#',
       target: 'CIL',
