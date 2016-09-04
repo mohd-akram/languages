@@ -63,12 +63,13 @@ window.onload = ->
     [key, value] = param.split '='
     queryParams[key] = decodeURIComponent value
 
-  {source, target} = queryParams
+  {source, target, direct} = queryParams
 
   form = document.forms[0]
-  [form.source.value, form.target.value] = [source or '', target or '']
+  [form.source.value, form.target.value, form.direct.checked] =
+    [source or '', target or '', direct]
 
-  compile source, target if source or target
+  compile source, target, direct if source or target
 
   graph.layout
     name: 'cose-bilkent'
@@ -81,16 +82,17 @@ window.onload = ->
   e.preventDefault()
   form = e.currentTarget
 
-  [source, target] = [form.source.value, form.target.value]
+  [source, target, direct] =
+    [form.source.value, form.target.value, form.direct.checked]
 
-  updateURL source: source, target: target
-  compile source, target
+  updateURL source: source, target: target, direct: direct
+  compile source, target, direct
 
 @show = ->
   updateURL()
   compile()
 
-compile = (source, target) ->
+compile = (source, target, direct) ->
   info.innerText = 'Select a language from the list'
 
   return if (source and not LANGUAGES.has source) or
@@ -100,35 +102,43 @@ compile = (source, target) ->
   targetNode = graph.getElementById(target) if target
 
   if sourceNode and targetNode
-    elements = sourceNode.successors().intersection targetNode.predecessors()
-                         .add [sourceNode, targetNode]
+    elements = (
+      if direct then sourceNode.edgesTo targetNode
+      else sourceNode.successors().intersection targetNode.predecessors()
+    ).add [sourceNode, targetNode]
     showElements elements
     text = ''
 
   else if sourceNode
-    elements = sourceNode.successors().add sourceNode
+    elements = (
+      if direct then sourceNode.outgoers() else sourceNode.successors()
+    ).add sourceNode
     showElements elements
 
-    count = elements.filter('node').length - 1
+    count = elements.nodes().length - 1
     text =
       if count is 1 then "#{source} compiles to #{count} language"
       else "#{source} compiles to #{count} languages"
+    text += " directly" if direct
 
   else if targetNode
-    elements = targetNode.predecessors().add targetNode
+    elements = (
+      if direct then targetNode.incomers() else targetNode.predecessors()
+     ).add targetNode
     showElements elements
 
-    count = elements.filter('node').length - 1
+    count = elements.nodes().length - 1
     text =
       if count is 1 then "#{count} language compiles to #{target}"
       else "#{count} languages compile to #{target}"
+    text += " directly" if direct
 
   else
     elements = graph.elements()
     elements.style display: 'element'
     text = "#{LANGUAGES.size} languages"
 
-  info.innerText = "#{text}\n#{elements.filter('edge').length} compilers"
+  info.innerText = "#{text}\n#{elements.edges().length} compilers"
 
 updateURL = (params) ->
   queryParts = []

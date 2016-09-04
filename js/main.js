@@ -38,7 +38,7 @@
   graph = null;
 
   window.onload = function() {
-    var form, k, key, len2, param, queryParams, ref1, ref2, ref3, value;
+    var direct, form, k, key, len2, param, queryParams, ref1, ref2, ref3, value;
     graph = cytoscape({
       container: document.getElementById('graph'),
       elements: elements,
@@ -90,11 +90,11 @@
       ref2 = param.split('='), key = ref2[0], value = ref2[1];
       queryParams[key] = decodeURIComponent(value);
     }
-    source = queryParams.source, target = queryParams.target;
+    source = queryParams.source, target = queryParams.target, direct = queryParams.direct;
     form = document.forms[0];
-    ref3 = [source || '', target || ''], form.source.value = ref3[0], form.target.value = ref3[1];
+    ref3 = [source || '', target || '', direct], form.source.value = ref3[0], form.target.value = ref3[1], form.direct.checked = ref3[2];
     if (source || target) {
-      compile(source, target);
+      compile(source, target, direct);
     }
     return graph.layout({
       name: 'cose-bilkent',
@@ -106,15 +106,16 @@
   };
 
   this.filter = function(e) {
-    var form, ref1;
+    var direct, form, ref1;
     e.preventDefault();
     form = e.currentTarget;
-    ref1 = [form.source.value, form.target.value], source = ref1[0], target = ref1[1];
+    ref1 = [form.source.value, form.target.value, form.direct.checked], source = ref1[0], target = ref1[1], direct = ref1[2];
     updateURL({
       source: source,
-      target: target
+      target: target,
+      direct: direct
     });
-    return compile(source, target);
+    return compile(source, target, direct);
   };
 
   this.show = function() {
@@ -122,7 +123,7 @@
     return compile();
   };
 
-  compile = function(source, target) {
+  compile = function(source, target, direct) {
     var count, sourceNode, targetNode, text;
     info.innerText = 'Select a language from the list';
     if ((source && !LANGUAGES.has(source)) || (target && !LANGUAGES.has(target))) {
@@ -135,19 +136,25 @@
       targetNode = graph.getElementById(target);
     }
     if (sourceNode && targetNode) {
-      elements = sourceNode.successors().intersection(targetNode.predecessors()).add([sourceNode, targetNode]);
+      elements = (direct ? sourceNode.edgesTo(targetNode) : sourceNode.successors().intersection(targetNode.predecessors())).add([sourceNode, targetNode]);
       showElements(elements);
       text = '';
     } else if (sourceNode) {
-      elements = sourceNode.successors().add(sourceNode);
+      elements = (direct ? sourceNode.outgoers() : sourceNode.successors()).add(sourceNode);
       showElements(elements);
-      count = elements.filter('node').length - 1;
+      count = elements.nodes().length - 1;
       text = count === 1 ? source + " compiles to " + count + " language" : source + " compiles to " + count + " languages";
+      if (direct) {
+        text += " directly";
+      }
     } else if (targetNode) {
-      elements = targetNode.predecessors().add(targetNode);
+      elements = (direct ? targetNode.incomers() : targetNode.predecessors()).add(targetNode);
       showElements(elements);
-      count = elements.filter('node').length - 1;
+      count = elements.nodes().length - 1;
       text = count === 1 ? count + " language compiles to " + target : count + " languages compile to " + target;
+      if (direct) {
+        text += " directly";
+      }
     } else {
       elements = graph.elements();
       elements.style({
@@ -155,7 +162,7 @@
       });
       text = LANGUAGES.size + " languages";
     }
-    return info.innerText = text + "\n" + (elements.filter('edge').length) + " compilers";
+    return info.innerText = text + "\n" + (elements.edges().length) + " compilers";
   };
 
   updateURL = function(params) {
