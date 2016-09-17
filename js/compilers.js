@@ -50,11 +50,23 @@
       type: 'Transpiler',
       url: 'https://haxe.org/'
     }, {
+      name: 'J2ObjC',
+      source: 'Java',
+      target: 'Objective-C',
+      type: 'Transpiler',
+      url: 'http://j2objc.org/'
+    }, {
       name: 'Js2Py',
       source: 'JavaScript',
       target: 'Python',
       type: 'Transpiler',
       url: 'https://github.com/PiotrDabkowski/Js2Py'
+    }, {
+      name: 'LLVM C Backend',
+      source: 'LLVM IR',
+      target: 'C',
+      type: 'Transpiler',
+      url: 'https://github.com/JuliaComputing/llvm-cbe'
     }, {
       name: 'MoonScript Compiler',
       source: 'MoonScript',
@@ -260,6 +272,12 @@
       type: 'Intermediate',
       url: 'http://wiki.dlang.org/LDC'
     }, {
+      name: 'LLILC',
+      source: 'CIL',
+      target: 'LLVM IR',
+      type: 'Intermediate',
+      url: 'https://github.com/dotnet/llilc'
+    }, {
       name: 'Rust Compiler',
       source: 'Rust',
       target: 'LLVM IR',
@@ -324,7 +342,7 @@
       source: 'Java',
       target: 'Java Bytecode',
       type: 'Intermediate',
-      url: 'https://en.wikipedia.org/wiki/Java_compiler'
+      url: 'http://openjdk.java.net/groups/compiler/'
     }, {
       name: 'JRuby',
       source: 'Ruby',
@@ -468,7 +486,7 @@
       source: 'Java Bytecode',
       target: 'Machine Code',
       type: 'JIT',
-      url: 'https://en.wikipedia.org/wiki/Java_virtual_machine'
+      url: 'https://docs.oracle.com/javase/specs/jvms/se8/html/index.html'
     }, {
       name: 'LuaJIT',
       source: 'Lua',
