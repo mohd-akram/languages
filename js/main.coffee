@@ -53,7 +53,6 @@ window.onload = ->
         'target-arrow-shape': 'triangle'
         'text-rotation': 'autorotate'
         'text-margin-y': -10
-        'text-opacity': 10
         'opacity': 0.7
         'curve-style': 'bezier'
     ]
@@ -71,12 +70,14 @@ window.onload = ->
 
   compile source, target, direct if source or target
 
-  graph.layout
+  layout = graph.layout
     name: 'cose-bilkent'
     idealEdgeLength: 100
     nodeRepulsion: 100000
     padding: 40
-    random: false
+    randomize: false
+
+  layout.run()
 
 @filter = (e) ->
   e.preventDefault()
@@ -124,7 +125,7 @@ compile = (source, target, direct) ->
   else if targetNode
     elements = (
       if direct then targetNode.incomers() else targetNode.predecessors()
-     ).add targetNode
+    ).add targetNode
     showElements elements
 
     count = elements.nodes().length - 1
