@@ -627,28 +627,35 @@
       source: 'Nim',
       target: 'C',
       type: 'Transpiler',
-      url: 'http://nim-lang.org/'
+      url: 'https://nim-lang.org/'
     },
     {
       name: 'Nim C++ Compiler',
       source: 'Nim',
       target: 'C++',
       type: 'Transpiler',
-      url: 'http://nim-lang.org/'
+      url: 'https://nim-lang.org/'
     },
     {
       name: 'Nim JavaScript Compiler',
       source: 'Nim',
       target: 'JavaScript',
       type: 'Transpiler',
-      url: 'http://nim-lang.org/'
+      url: 'https://nim-lang.org/'
     },
     {
       name: 'Nim Objective-C Compiler',
       source: 'Nim',
       target: 'Objective-C',
       type: 'Transpiler',
-      url: 'http://nim-lang.org/'
+      url: 'https://nim-lang.org/'
+    },
+    {
+      name: 'NLVM',
+      source: 'Nim',
+      target: 'LLVM IR',
+      type: 'Transpiler',
+      url: 'https://github.com/arnetheduck/nlvm'
     },
     {
       name: 'Opal',
