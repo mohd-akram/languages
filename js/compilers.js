@@ -483,6 +483,13 @@
       url: 'https://github.com/ghcjs'
     },
     {
+      name: 'Objdump',
+      source: 'Machine Code',
+      target: 'Assembly',
+      type: 'Transpiler',
+      url: 'https://www.gnu.org/software/binutils/'
+    },
+    {
       name: 'GopherJS',
       source: 'Go',
       target: 'JavaScript',
@@ -663,6 +670,13 @@
       target: 'C++',
       type: 'Transpiler',
       url: 'https://github.com/serge-sans-paille/pythran'
+    },
+    {
+      name: 'RetDec',
+      source: 'Machine Code',
+      target: 'C',
+      type: 'Transpiler',
+      url: 'https://retdec.com/'
     },
     {
       name: 'Scala.js',
