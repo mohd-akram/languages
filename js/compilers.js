@@ -665,6 +665,13 @@
       url: 'https://github.com/serge-sans-paille/pythran'
     },
     {
+      name: 'Royale JavaScript Compiler',
+      source: 'ActionScript',
+      target: 'JavaScript',
+      type: 'Transpiler',
+      url: 'https://royale.apache.org'
+    },
+    {
       name: 'Scala.js',
       source: 'Scala',
       target: 'JavaScript',
