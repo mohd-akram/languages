@@ -46,6 +46,13 @@
       url: 'https://github.com/cretz/asmble/'
     },
     {
+      name: 'BFC',
+      source: 'Brainfuck',
+      target: 'LLVM IR',
+      type: 'Intermediate',
+      url: 'https://github.com/Wilfred/bfc'
+    },
+    {
       name: 'Ceylon Compiler',
       source: 'Ceylon',
       target: 'Java Bytecode',
@@ -406,6 +413,13 @@
       url: 'http://bloomberg.github.io/bucklescript/'
     },
     {
+      name: 'C2BF',
+      source: 'C',
+      target: 'Brainfuck',
+      type: 'Transpiler',
+      url: 'https://github.com/benjojo/c2bf'
+    },
+    {
       name: 'Ceylon JavaScript Compiler',
       source: 'Ceylon',
       target: 'JavaScript',
@@ -460,6 +474,13 @@
       target: 'JavaScript',
       type: 'Transpiler',
       url: 'http://emscripten.org'
+    },
+    {
+      name: 'Esotope Brainfuck Compiler',
+      source: 'Brainfuck',
+      target: 'C',
+      type: 'Transpiler',
+      url: 'https://github.com/lifthrasiir/esotope-bfc'
     },
     {
       name: 'Fable',
