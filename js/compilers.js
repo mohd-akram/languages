@@ -39,6 +39,13 @@
     },
     {
       // Intermediate
+      name: 'ABCL',
+      source: 'Common Lisp',
+      target: 'Java Bytecode',
+      type: 'Intermediate',
+      url: 'https://abcl.org/'
+    },
+    {
       name: 'Asmble',
       source: 'WebAssembly',
       target: 'Java Bytecode',
@@ -74,6 +81,13 @@
       url: 'http://clang.llvm.org/'
     },
     {
+      name: 'Clasp',
+      source: 'Common Lisp',
+      target: 'LLVM IR',
+      type: 'Intermediate',
+      url: 'https://github.com/clasp-developers/clasp'
+    },
+    {
       name: 'Clojure Compiler',
       source: 'Clojure',
       target: 'Java Bytecode',
@@ -93,6 +107,27 @@
       target: 'LLVM IR',
       type: 'Intermediate',
       url: 'https://github.com/flang-compiler/flang'
+    },
+    {
+      name: 'G++',
+      source: 'C++',
+      target: 'Assembly',
+      type: 'Intermediate',
+      url: 'https://gcc.gnu.org/'
+    },
+    {
+      name: 'GCC',
+      source: 'C',
+      target: 'Assembly',
+      type: 'Intermediate',
+      url: 'https://gcc.gnu.org/'
+    },
+    {
+      name: 'GFortran',
+      source: 'Fortran',
+      target: 'Assembly',
+      type: 'Intermediate',
+      url: 'https://gcc.gnu.org/fortran/'
     },
     {
       name: 'GHC LLVM',
@@ -165,6 +200,13 @@
       url: 'https://github.com/dotnet/llilc'
     },
     {
+      name: 'NLVM',
+      source: 'Nim',
+      target: 'LLVM IR',
+      type: 'Intermediate',
+      url: 'https://github.com/arnetheduck/nlvm'
+    },
+    {
       name: 'Phalanger',
       source: 'PHP',
       target: 'CIL',
@@ -200,6 +242,13 @@
       url: 'http://www.scala-lang.org/'
     },
     {
+      name: 'Scala Native',
+      source: 'Scala',
+      target: 'LLVM IR',
+      type: 'Intermediate',
+      url: 'http://www.scala-native.org/'
+    },
+    {
       name: 'Swift Compiler',
       source: 'Swift',
       target: 'LLVM IR',
@@ -212,6 +261,13 @@
       target: 'CIL',
       type: 'Intermediate',
       url: 'https://github.com/Microsoft/visualfsharp'
+    },
+    {
+      name: 'VOC',
+      source: 'Python',
+      target: 'Java Bytecode',
+      type: 'Intermediate',
+      url: 'https://pybee.org/voc'
     },
     {
       // JIT
@@ -257,6 +313,13 @@
       url: 'http://pypy.org/'
     },
     {
+      name: 'Rubinius',
+      source: 'Ruby',
+      target: 'Machine Code',
+      type: 'JIT',
+      url: 'https://github.com/rubinius/rubinius'
+    },
+    {
       name: 'V8',
       source: 'JavaScript',
       target: 'Machine Code',
@@ -265,6 +328,20 @@
     },
     {
       // Native
+      name: 'Allegro CL',
+      source: 'Common Lisp',
+      target: 'Machine Code',
+      type: 'Native',
+      url: 'https://franz.com/products/allegro-common-lisp/'
+    },
+    {
+      name: 'Clozure CL',
+      source: 'Common Lisp',
+      target: 'Machine Code',
+      type: 'Native',
+      url: 'https://ccl.clozure.com/'
+    },
+    {
       name: 'DMD',
       source: 'D',
       target: 'Machine Code',
@@ -284,27 +361,6 @@
       target: 'Machine Code',
       type: 'Native',
       url: 'http://www.freebasic.net/'
-    },
-    {
-      name: 'G++',
-      source: 'C++',
-      target: 'Machine Code',
-      type: 'Native',
-      url: 'https://gcc.gnu.org/'
-    },
-    {
-      name: 'GCC',
-      source: 'C',
-      target: 'Machine Code',
-      type: 'Native',
-      url: 'https://gcc.gnu.org/'
-    },
-    {
-      name: 'GFortran',
-      source: 'Fortran',
-      target: 'Machine Code',
-      type: 'Native',
-      url: 'https://gcc.gnu.org/fortran/'
     },
     {
       name: 'GHC',
@@ -342,6 +398,13 @@
       url: 'https://software.intel.com/en-us/c-compilers'
     },
     {
+      name: 'LispWorks',
+      source: 'Common Lisp',
+      target: 'Machine Code',
+      type: 'Native',
+      url: 'http://www.lispworks.com/'
+    },
+    {
       name: 'LLVM',
       source: 'LLVM IR',
       target: 'Machine Code',
@@ -354,6 +417,13 @@
       target: 'Machine Code',
       type: 'Native',
       url: 'https://ocaml.org/'
+    },
+    {
+      name: 'SBCL',
+      source: 'Common Lisp',
+      target: 'Machine Code',
+      type: 'Native',
+      url: 'http://sbcl.org'
     },
     {
       name: 'UHC',
@@ -446,6 +516,13 @@
       target: 'JavaScript',
       type: 'Transpiler',
       url: 'http://www.dragome.com'
+    },
+    {
+      name: 'ECL',
+      source: 'Common Lisp',
+      target: 'C',
+      type: 'Transpiler',
+      url: 'https://common-lisp.net/project/ecl/'
     },
     {
       name: 'Elm Compiler',
@@ -574,6 +651,13 @@
       url: 'https://haxe.org/'
     },
     {
+      name: 'Iota',
+      source: 'LLVM IR',
+      target: 'Common Lisp',
+      type: 'Transpiler',
+      url: 'https://github.com/froggey/Iota'
+    },
+    {
       name: 'J2ObjC',
       source: 'Java',
       target: 'Objective-C',
@@ -586,6 +670,13 @@
       target: 'Python',
       type: 'Transpiler',
       url: 'https://github.com/PiotrDabkowski/Js2Py'
+    },
+    {
+      name: 'Js_of_ocaml',
+      source: 'OCaml',
+      target: 'JavaScript',
+      type: 'Transpiler',
+      url: 'https://ocsigen.org/js_of_ocaml/'
     },
     {
       name: 'JSIL',
@@ -627,28 +718,28 @@
       source: 'Nim',
       target: 'C',
       type: 'Transpiler',
-      url: 'http://nim-lang.org/'
+      url: 'https://nim-lang.org/'
     },
     {
       name: 'Nim C++ Compiler',
       source: 'Nim',
       target: 'C++',
       type: 'Transpiler',
-      url: 'http://nim-lang.org/'
+      url: 'https://nim-lang.org/'
     },
     {
       name: 'Nim JavaScript Compiler',
       source: 'Nim',
       target: 'JavaScript',
       type: 'Transpiler',
-      url: 'http://nim-lang.org/'
+      url: 'https://nim-lang.org/'
     },
     {
       name: 'Nim Objective-C Compiler',
       source: 'Nim',
       target: 'Objective-C',
       type: 'Transpiler',
-      url: 'http://nim-lang.org/'
+      url: 'https://nim-lang.org/'
     },
     {
       name: 'Opal',
@@ -705,6 +796,13 @@
       target: 'JavaScript',
       type: 'Transpiler',
       url: 'http://foswiki.cs.uu.nl/foswiki/UHC'
+    },
+    {
+      name: 'Vala Compiler',
+      source: 'Vala',
+      target: 'C',
+      type: 'Transpiler',
+      url: 'https://wiki.gnome.org/Projects/Vala'
     }
   ];
 
