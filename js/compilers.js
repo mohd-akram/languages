@@ -705,7 +705,13 @@
       target: 'JavaScript',
       type: 'Transpiler',
       url: 'http://foswiki.cs.uu.nl/foswiki/UHC'
-    }
+    },
+    {
+      name: 'Vala Compiler',
+      source: 'Vala',
+      target: 'C',
+      type: 'Transpiler',
+      url: 'https://wiki.gnome.org/Projects/Vala'
   ];
 
 }).call(this);
