@@ -62,13 +62,14 @@ window.onload = ->
     [key, value] = param.split '='
     queryParams[key] = decodeURIComponent value
 
-  {source, target, direct} = queryParams
+  {source, target, direct, cycles} = queryParams
 
   form = document.forms[0]
-  [form.source.value, form.target.value, form.direct.checked] =
-    [source or '', target or '', direct]
+  [form.source.value, form.target.value,
+   form.direct.checked, form.cycles.checked] =
+    [source or '', target or '', direct, cycles]
 
-  compile source, target, direct if source or target
+  compile source, target, direct, cycles if source or target
 
   layout = graph.layout
     name: 'cose-bilkent'
@@ -83,17 +84,28 @@ window.onload = ->
   e.preventDefault()
   form = e.currentTarget
 
-  [source, target, direct] =
-    [form.source.value, form.target.value, form.direct.checked]
+  [source, target, direct, cycles] =
+    [form.source.value, form.target.value,
+     form.direct.checked, form.cycles.checked]
 
-  updateURL source: source, target: target, direct: direct
-  compile source, target, direct
+  updateURL { source, target, direct, cycles }
+  compile source, target, direct, cycles
 
 @show = ->
   updateURL()
   compile()
 
-compile = (source, target, direct) ->
+findPaths = (sourceNode, targetNode, path) ->
+  path = sourceNode.cy().collection() if not path
+  return yield path if sourceNode is targetNode
+  for edge in sourceNode.outgoers 'edge'
+    node = edge.target()
+    continue if path.connectedNodes().contains node
+    path.merge edge
+    yield from findPaths node, targetNode, path
+    path.unmerge edge
+
+compile = (source, target, direct, cycles) ->
   info.innerText = 'Select a language from the list'
 
   return if (source and not LANGUAGES.has source) or
@@ -103,12 +115,23 @@ compile = (source, target, direct) ->
   targetNode = graph.getElementById(target) if target
 
   if sourceNode and targetNode
-    elements = (
-      if direct then sourceNode.edgesTo targetNode
-      else sourceNode.successors().intersection targetNode.predecessors()
-    ).add [sourceNode, targetNode]
+    if direct or cycles
+      elements = (
+        if direct then sourceNode.edgesTo targetNode
+        else sourceNode.successors().intersection targetNode.predecessors()
+      ).add [sourceNode, targetNode]
+      text = ''
+    else
+      elements = graph.collection().add [sourceNode, targetNode]
+      count = 0
+      for path from findPaths sourceNode, targetNode
+        elements.merge path.connectedNodes()
+        elements.merge path
+        count += 1
+      text =
+        if count is 1 then "#{count} way to compile #{source} to #{target}"
+        else "#{count} ways to compile #{source} to #{target}"
     showElements elements
-    text = ''
 
   else if sourceNode
     elements = (
