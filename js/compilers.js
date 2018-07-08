@@ -53,6 +53,13 @@
       url: 'https://github.com/cretz/asmble/'
     },
     {
+      name: 'BFC',
+      source: 'Brainfuck',
+      target: 'LLVM IR',
+      type: 'Intermediate',
+      url: 'https://github.com/Wilfred/bfc'
+    },
+    {
       name: 'Ceylon Compiler',
       source: 'Ceylon',
       target: 'Java Bytecode',
@@ -476,6 +483,13 @@
       url: 'http://bloomberg.github.io/bucklescript/'
     },
     {
+      name: 'C2BF',
+      source: 'C',
+      target: 'Brainfuck',
+      type: 'Transpiler',
+      url: 'https://github.com/benjojo/c2bf'
+    },
+    {
       name: 'Ceylon JavaScript Compiler',
       source: 'Ceylon',
       target: 'JavaScript',
@@ -539,6 +553,13 @@
       url: 'http://emscripten.org'
     },
     {
+      name: 'Esotope Brainfuck Compiler',
+      source: 'Brainfuck',
+      target: 'C',
+      type: 'Transpiler',
+      url: 'https://github.com/lifthrasiir/esotope-bfc'
+    },
+    {
       name: 'Fable',
       source: 'F#',
       target: 'JavaScript',
@@ -558,6 +579,13 @@
       target: 'JavaScript',
       type: 'Transpiler',
       url: 'https://github.com/ghcjs'
+    },
+    {
+      name: 'Objdump',
+      source: 'Machine Code',
+      target: 'Assembly',
+      type: 'Transpiler',
+      url: 'https://www.gnu.org/software/binutils/'
     },
     {
       name: 'GopherJS',
@@ -754,6 +782,13 @@
       target: 'C++',
       type: 'Transpiler',
       url: 'https://github.com/serge-sans-paille/pythran'
+    },
+    {
+      name: 'RetDec',
+      source: 'Machine Code',
+      target: 'C',
+      type: 'Transpiler',
+      url: 'https://retdec.com/'
     },
     {
       name: 'Scala.js',
