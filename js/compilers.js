@@ -95,6 +95,13 @@
       url: 'https://clojure.org/index'
     },
     {
+      name: 'Clojure CLR',
+      source: 'Clojure',
+      target: 'CIL',
+      type: 'Compiler',
+      url: 'https://github.com/clojure/clojure-clr'
+    },
+    {
       name: 'Crystal Compiler',
       source: 'Crystal',
       target: 'LLVM IR',
@@ -768,6 +775,13 @@
       target: 'D',
       type: 'Transpiler',
       url: 'https://github.com/afrog33k/SharpNative'
+    },
+    {
+      name: 'Rembulan',
+      source: 'Lua',
+      target: 'Java Bytecode',
+      type: 'Compiler',
+      url: 'https://github.com/mjanicek/rembulan'
     },
     {
       name: 'TeaVM',
