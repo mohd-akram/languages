@@ -74,7 +74,7 @@ window.onload = ->
   layout = graph.layout
     name: 'cose-bilkent'
     idealEdgeLength: 100
-    nodeRepulsion: 100000
+    nodeRepulsion: 1000000
     padding: 40
     randomize: false
 
