@@ -11,6 +11,8 @@
       #controls { position: fixed; top: 5px; left: 5px; z-index: 1; }
     </style>
     <script src="js/cytoscape.min.js"></script>
+    <script src="js/layout-base.js"></script>
+    <script src="js/cose-base.js"></script>
     <script src="js/cytoscape-cose-bilkent.js"></script>
     <script src="js/compilers.js"></script>
     <script src="js/colors.js"></script>
@@ -57,7 +59,7 @@
         option.text = language;
         langs.appendChild(option);
       });
-      // Safari doesn't support datalist
+      // Old browsers don't support datalist
       if (!('options' in langs)) {
         var script = document.createElement('script');
         script.src = 'js/awesomplete.min.js';
