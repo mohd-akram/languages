@@ -104,6 +104,7 @@ CoSEConstants.DEFAULT_COMPONENT_SEPERATION = 60;
 CoSEConstants.TILE = true;
 CoSEConstants.TILING_PADDING_VERTICAL = 10;
 CoSEConstants.TILING_PADDING_HORIZONTAL = 10;
+CoSEConstants.TREE_REDUCTION_ON_INCREMENTAL = false; // make this true when cose is used incrementally as a part of other non-incremental layout
 
 module.exports = CoSEConstants;
 
@@ -395,6 +396,18 @@ CoSELayout.prototype.classicLayout = function () {
 
         this.positionNodesRandomly();
       }
+  } else {
+    if (CoSEConstants.TREE_REDUCTION_ON_INCREMENTAL) {
+      // Reduce the trees in incremental mode if only this constant is set to true 
+      this.reduceTrees();
+      // Update nodes that gravity will be applied
+      this.graphManager.resetAllNodesToApplyGravitation();
+      var allNodes = new Set(this.getAllNodes());
+      var intersection = this.nodesWithGravity.filter(function (x) {
+        return allNodes.has(x);
+      });
+      this.graphManager.setAllNodesToApplyGravitation(intersection);
+    }
   }
 
   this.initSpringEmbedder();
@@ -1008,8 +1021,8 @@ CoSELayout.prototype.tileCompoundMembers = function (childGraphMap, idToNode) {
 
     self.tiledMemberPack[id] = self.tileNodes(childGraphMap[id], compoundNode.paddingLeft + compoundNode.paddingRight);
 
-    compoundNode.rect.width = self.tiledMemberPack[id].width + 20;
-    compoundNode.rect.height = self.tiledMemberPack[id].height + 20;
+    compoundNode.rect.width = self.tiledMemberPack[id].width;
+    compoundNode.rect.height = self.tiledMemberPack[id].height;
   });
 };
 
@@ -1020,8 +1033,8 @@ CoSELayout.prototype.tileNodes = function (nodes, minWidth) {
     rows: [],
     rowWidth: [],
     rowHeight: [],
-    width: 20,
-    height: 20,
+    width: 0,
+    height: minWidth, // assume minHeight equals to minWidth
     verticalPadding: verticalPadding,
     horizontalPadding: horizontalPadding
   };

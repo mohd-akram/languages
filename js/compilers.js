@@ -172,6 +172,13 @@
       url: 'http://groovy-lang.org/groovyc.html'
     },
     {
+      name: 'Haxe ABC Compiler',
+      source: 'Haxe',
+      target: 'ActionScript Bytecode',
+      type: 'Intermediate',
+      url: 'https://haxe.org/'
+    },
+    {
       name: 'IronPython',
       source: 'Python',
       target: 'CIL',
@@ -212,6 +219,13 @@
       target: 'Java Bytecode',
       type: 'Intermediate',
       url: 'https://kotlinlang.org/'
+    },
+    {
+      name: 'Kotlin/Native',
+      source: 'Kotlin',
+      target: 'LLVM IR',
+      type: 'Intermediate',
+      url: 'https://kotlinlang.org/docs/reference/native-overview.html'
     },
     {
       name: 'LDC',
@@ -268,6 +282,13 @@
       target: 'CIL',
       type: 'Intermediate',
       url: 'https://github.com/dotnet/roslyn'
+    },
+    {
+      name: 'Royale ABC Compiler',
+      source: 'ActionScript',
+      target: 'ActionScript Bytecode',
+      type: 'Intermediate',
+      url: 'https://royale.apache.org'
     },
     {
       name: 'Rust Compiler',
@@ -651,13 +672,6 @@
       url: 'http://haste-lang.org'
     },
     {
-      name: 'Haxe ActionScript Compiler',
-      source: 'Haxe',
-      target: 'ActionScript',
-      type: 'Transpiler',
-      url: 'https://haxe.org/'
-    },
-    {
       name: 'Haxe C# Compiler',
       source: 'Haxe',
       target: 'C#',
@@ -824,6 +838,13 @@
       target: 'C++',
       type: 'Transpiler',
       url: 'https://github.com/serge-sans-paille/pythran'
+    },
+    {
+      name: 'Royale JavaScript Compiler',
+      source: 'ActionScript',
+      target: 'JavaScript',
+      type: 'Transpiler',
+      url: 'https://royale.apache.org'
     },
     {
       name: 'Scala.js',
